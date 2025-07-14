@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import { motion } from "framer-motion";
 import CategorySidebar from "@/components/organisms/CategorySidebar";
 import TaskList from "@/components/organisms/TaskList";
 import TaskModal from "@/components/organisms/TaskModal";
 import QuickAddBar from "@/components/molecules/QuickAddBar";
 import FilterBar from "@/components/molecules/FilterBar";
+import Button from "@/components/atoms/Button";
+import ApperIcon from "@/components/ApperIcon";
 import { useTasks } from "@/hooks/useTasks";
 import { useCategories } from "@/hooks/useCategories";
 import { toast } from "react-toastify";
-
+import { AuthContext } from "@/App";
 const TaskDashboard = () => {
   const { 
     tasks, 
@@ -43,7 +45,7 @@ const TaskDashboard = () => {
   // Update category task counts when tasks change
   useEffect(() => {
     if (tasks.length > 0 && categories.length > 0) {
-      categories.forEach(category => {
+categories.forEach(category => {
         const count = tasks.filter(task => task.categoryId === category.Id.toString()).length;
         if (count !== category.taskCount) {
           updateTaskCount(category.Id, count);
@@ -171,7 +173,7 @@ const TaskDashboard = () => {
     }
   };
 
-  const handleToggleComplete = async (taskId) => {
+const handleToggleComplete = async (taskId) => {
     try {
       await toggleTaskCompletion(taskId);
     } catch (error) {
@@ -210,7 +212,7 @@ const TaskDashboard = () => {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white border-b border-gray-200 p-6"
         >
-          <div className="flex items-center justify-between mb-6">
+<div className="flex items-center justify-between mb-6">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
                 {selectedCategory === "all" 
@@ -222,6 +224,7 @@ const TaskDashboard = () => {
                 {filteredTasks.length} {filteredTasks.length === 1 ? "task" : "tasks"}
               </p>
             </div>
+            <LogoutButton />
           </div>
 
           {/* Quick Add Bar */}
@@ -265,6 +268,22 @@ const TaskDashboard = () => {
         title={editingTask ? "Edit Task" : "Create Task"}
       />
     </div>
+);
+};
+
+const LogoutButton = () => {
+  const { logout } = useContext(AuthContext);
+  
+  return (
+    <Button
+      variant="secondary"
+      size="sm"
+      onClick={logout}
+      className="flex items-center gap-2"
+    >
+      <ApperIcon name="LogOut" size={16} />
+      Logout
+    </Button>
   );
 };
 

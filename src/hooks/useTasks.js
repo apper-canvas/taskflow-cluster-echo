@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { taskService } from "@/services/api/taskService";
 import { toast } from "react-toastify";
-
 export const useTasks = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);

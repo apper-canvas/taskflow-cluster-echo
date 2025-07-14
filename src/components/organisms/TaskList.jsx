@@ -23,8 +23,8 @@ const TaskList = ({
     setFilteredTasks(tasks);
   }, [tasks]);
 
-  const getCategoryById = (categoryId) => {
-    return categories.find(c => c.Id.toString() === categoryId);
+const getCategoryById = (categoryId) => {
+    return categories.find(c => c.Id === parseInt(categoryId));
   };
 
   if (loading) {

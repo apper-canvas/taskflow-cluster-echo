@@ -39,7 +39,7 @@ const TaskModal = ({
       setFormData({
         title: "",
         description: "",
-        categoryId: categories[0]?.Id.toString() || "",
+categoryId: categories[0]?.Id || "",
         priority: 1,
         dueDate: new Date().toISOString().split("T")[0]
       });
@@ -171,7 +171,7 @@ const TaskModal = ({
                 error={!!errors.categoryId}
               >
                 <option value="">Select a category</option>
-                {categories.map((category) => (
+{categories.map((category) => (
                   <option key={category.Id} value={category.Id}>
                     {category.name}
                   </option>
