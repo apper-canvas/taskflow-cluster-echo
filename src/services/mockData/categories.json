@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1,
+    "name": "Work",
+    "color": "blue",
+    "taskCount": 4
+  },
+  {
+    "Id": 2,
+    "name": "Meetings",
+    "color": "purple",
+    "taskCount": 1
+  },
+  {
+    "Id": 3,
+    "name": "Personal",
+    "color": "green",
+    "taskCount": 2
+  },
+  {
+    "Id": 4,
+    "name": "Health",
+    "color": "red",
+    "taskCount": 1
+  },
+  {
+    "Id": 5,
+    "name": "Learning",
+    "color": "orange",
+    "taskCount": 1
+  },
+  {
+    "Id": 6,
+    "name": "Shopping",
+    "color": "pink",
+    "taskCount": 0
+  },
+  {
+    "Id": 7,
+    "name": "Finance",
+    "color": "indigo",
+    "taskCount": 0
+  },
+  {
+    "Id": 8,
+    "name": "Fitness",
+    "color": "teal",
+    "taskCount": 0
+  }
+]
